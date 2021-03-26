@@ -11,6 +11,7 @@ The goal is to demonstrate how to build a simple TCP server with NodeJS and make
 ## Table of contents:
 
 - [TypeScript for static type definitions](#typescript-for-static-type-definitions)
+- [Prettier for code formatting](#prettier-for-code-formatting)
 - [Jest for JavaScript testing](#jest-for-javascript-testing)
 - [Publish coverage to codecov](#publish-coverage-to-codecov)
 - [Testing](#testing)
@@ -87,6 +88,41 @@ You can now build your code with:
 
 ```bash
 $ npm run build
+```
+
+## Prettier for code formatting
+
+[Prettier](https://prettier.io/) is an opinionated tool to format your code consistently so everyone working on the project follow the same coding style and the code is more readable. You can use it both from command line and from VSCode.
+
+Just install it:
+
+```bash
+$ npm i --save-dev prettier
+```
+
+Create a `.prettierrc` configuration file:
+
+```json
+{
+    "trailingComma":"none",
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": false
+}
+```
+
+Add the following script in `package.json`:
+
+```json
+"scripts": {
+    "format": "prettier --write \"src/**/*.ts\""
+}
+```
+
+And now you can format your codebase with:
+
+```bash
+$ npm run format
 ```
 
 ## Jest for JavaScript testing
