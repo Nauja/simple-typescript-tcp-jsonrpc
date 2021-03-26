@@ -118,7 +118,7 @@ Add the following script in `package.json`:
 
 ```json
 "scripts": {
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"  \"test/**/*.ts\""
 }
 ```
 
