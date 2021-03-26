@@ -104,12 +104,14 @@ Create a `.prettierrc` configuration file:
 
 ```json
 {
-    "trailingComma":"none",
+    "trailingComma": "none",
     "tabWidth": 4,
     "semi": true,
     "singleQuote": false
 }
 ```
+
+While those settings may be subjective, make sure to commit `.prettierrc` in your project so everyone follow the same rules.
 
 Add the following script in `package.json`:
 
