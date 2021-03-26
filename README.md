@@ -1,8 +1,84 @@
 # simple-typescript-tcp-jsonrpc
 
+[![build status](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml/badge.svg)](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml)
+
 This is just an example of a simple TCP server using JSON-RPC as a protocol.
 
 The goal is to demonstrate how to build a simple TCP server with NodeJS and make a good use of basic best practices such as TypeScript, unit testing or lint.
+
+## TypeScript for static type definitions
+
+It is greatly recommended to use [TypeScript](https://www.typescriptlang.org/) on a big codebase as it make the code more readable, secure and reliable by adding static type definitions.
+
+The first thing is to install [typescript](https://www.npmjs.com/package/typescript) and [@types/node](https://www.npmjs.com/package/@types/node) for NodeJS type definitions:
+
+```bash
+$ npm i --save-dev typescript @types/node
+```
+
+Now create a `tsconfig.json` configuration file containing:
+
+```json
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es6",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "node_modules/*",
+                "src/types/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
+```
+
+This tells TypeScript to compile all `.ts` files from `"src/**/*"` to the `"outDir": "dist"` folder. Also note the `"module": "commonjs"` configuration that makes TypeScript compile your code to CommonJS modules.
+
+For example, a `foo.ts` file with the following code:
+
+```js
+export function foo()
+{
+    // content
+}
+```
+
+Would be compiled to `foo.js`:
+
+```js
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.foo = void 0;
+function foo() {
+    // content
+}
+exports.foo = foo;
+```
+
+The last step is to add the following script in `package.json`:
+
+```json
+"scripts": {
+    "build": "tsc"
+}
+```
+
+You can now build your code with:
+
+```bash
+$ npm run build
+```
 
 ## Jest for JavaScript testing
 
