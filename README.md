@@ -329,4 +329,4 @@ $ npm test
 
 ## License
 
-Licensed under the [MIT](License) License.
+Licensed under the [MIT](LICENSE) License.
