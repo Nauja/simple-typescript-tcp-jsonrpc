@@ -12,12 +12,27 @@ The goal is to demonstrate how to build a simple TCP server with NodeJS and make
 
 ## Table of contents:
 
+- [Usage](#usage)
 - [TypeScript for static type definitions](#typescript-for-static-type-definitions)
 - [ESLint for code quality](#eslint-for-code-quality)
 - [Prettier for code formatting](#prettier-for-code-formatting)
 - [Jest for JavaScript testing](#jest-for-javascript-testing)
 - [Publish coverage to codecov](#publish-coverage-to-codecov)
 - [Testing](#testing)
+
+## Usage
+
+This sample is not meant to be run standalone, it is more meant as a demonstration of writing a TCP server in NodeJS, respecting the best practices, and running unit tests.
+
+But you can still run the sample with:
+
+```bash
+$ npm run build
+$ npm run start
+Server listening for connection requests on socket 0.0.0.0:65521
+```
+
+This starts a TCP server you can send JSON-RPC messages to.
 
 ## TypeScript for static type definitions
 
