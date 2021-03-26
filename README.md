@@ -25,22 +25,55 @@ Jest configuration is done in `jest.config.js`:
 ```bash
 module.exports = {
     globals: {
-        'ts-jest': {
-            tsconfigFile: 'tsconfig.json'
+        "ts-jest": {
+            tsconfig: "tsconfig.json"
         }
     },
     moduleFileExtensions: [
-        'ts',
-        'js'
+        "ts",
+        "js"
     ],
     transform: {
-        '^.+\\.(ts|tsx)$': './node_modules/ts-jest/preprocessor.js'
+        "^.+\\.(ts|tsx)$": "ts-jest"
     },
     testMatch: [
-        '**/test/**/*.test.(ts|js)'
+        "**/test/**/*.test.(ts|js)"
     ],
-    testEnvironment: 'node'
+    testEnvironment: "node"
 };
+```
+
+This configures Jest to run all tests from the `test` directory matching the `**/test/**/*.test.(ts|js)` pattern. It also enable `ts-jest` to allow testing code written in TypeScript.
+
+The last step is to add the following script in `package.json`:
+
+```json
+"scripts": {
+    "test": "jest --forceExit --coverage --verbose"
+}
+```
+
+You can now run tests with:
+
+```bash
+$ npm run test
+> simple-typescript-tcp-jsonrpc@1.0.0 test F:\simple-typescript-tcp-jsonrpc
+> jest --forceExit --coverage --verbose
+
+ PASS  test/app.test.ts (7.33 s)
+  GET /random-url
+    √ should return 404 (2 ms)
+
+----------|---------|----------|---------|---------|-------------------
+File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------|---------|----------|---------|---------|-------------------
+All files |       0 |        0 |       0 |       0 |
+----------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        8.952 s
+Ran all test suites.
 ```
 
 ## Testing
