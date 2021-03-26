@@ -11,6 +11,7 @@ The goal is to demonstrate how to build a simple TCP server with NodeJS and make
 
 - [TypeScript for static type definitions](#typescript-for-static-type-definitions)
 - [Jest for JavaScript testing](#jest-for-javascript-testing)
+- [Publish coverage to codecov](#publish-coverage-to-codecov)
 - [Testing](#testing)
 
 ## TypeScript for static type definitions
@@ -157,6 +158,18 @@ Tests:       1 passed, 1 total
 Snapshots:   0 total
 Time:        8.952 s
 Ran all test suites.
+```
+
+## Publish coverage to codecov
+
+For continuous integration, it is best to automatically publish coverage results to a service like [codecov.io](https://codecov.io/).
+
+It can be easily done with `codecov`:
+
+```bash
+$ npm install --save-dev codecov
+$ npm run test
+$ ./node_modules/.bin/codecov --token=CODECOV_TOKEN
 ```
 
 ## Testing
