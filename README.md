@@ -326,3 +326,7 @@ $ cd simple-typescript-tcp-jsonrpc
 $ npm install
 $ npm test
 ```
+
+## License
+
+Licensed under the [MIT](License) License.
