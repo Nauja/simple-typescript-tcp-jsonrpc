@@ -31,4 +31,4 @@ jobs:
       - name: Publish coverage
         run: |
           npm install --save-dev codecov
-          ./node_modules/.bin/codecov --token=${{ secrets.CODECOV_TOKEN }}
+          ./node_modules/.bin/codecov --disable=gcov --token=${{ secrets.CODECOV_TOKEN }}
