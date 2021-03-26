@@ -1,6 +1,8 @@
 # simple-typescript-tcp-jsonrpc
 
 [![build status](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml/badge.svg)](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml)
+[![codecov](https://codecov.io/gh/Nauja/simple-typescript-tcp-jsonrpc/branch/main/graph/badge.svg?token=6ZHBCWGR2L)](https://codecov.io/gh/Nauja/simple-typescript-tcp-jsonrpc)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 This is just an example of a simple TCP server using JSON-RPC as a protocol.
 
@@ -10,6 +12,7 @@ The goal is to demonstrate how to build a simple TCP server with NodeJS and make
 
 - [TypeScript for static type definitions](#typescript-for-static-type-definitions)
 - [Jest for JavaScript testing](#jest-for-javascript-testing)
+- [Publish coverage to codecov](#publish-coverage-to-codecov)
 - [Testing](#testing)
 
 ## TypeScript for static type definitions
@@ -156,6 +159,18 @@ Tests:       1 passed, 1 total
 Snapshots:   0 total
 Time:        8.952 s
 Ran all test suites.
+```
+
+## Publish coverage to codecov
+
+For continuous integration, it is best to automatically publish coverage results to a service like [codecov.io](https://codecov.io/).
+
+It can be easily done with [codecov](https://www.npmjs.com/package/codecov):
+
+```bash
+$ npm install --save-dev codecov
+$ npm run test
+$ ./node_modules/.bin/codecov --token=CODECOV_TOKEN
 ```
 
 ## Testing
