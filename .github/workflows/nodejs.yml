@@ -29,6 +29,6 @@ jobs:
         env:
           CI: true
       - name: Publish coverage
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          npm install --save-dev codecov
+          ./node_modules/.bin/codecov --token=${{ secrets.CODECOV_TOKEN }}
