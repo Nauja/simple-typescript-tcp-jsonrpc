@@ -1,5 +1,6 @@
 import * as net from "net"
-const jsonrpc = require("jsonrpc-node");
+
+const Server = require("jsonrpc-node").TCP.Server;
 
 function ping(args: any, reply: any)
 {
@@ -8,18 +9,23 @@ function ping(args: any, reply: any)
 
 export function create_server(ready?: () => void): net.Server
 {
-    var server = new jsonrpc.TCP.Server();
+    // Create a JSON-RPC server
+    var server = new Server();
 
+    // Register an RPC function
     server.register("ping", ping);
 
-    // Create a new TCP server.
+    // Wrap our server with the builtin net.Server
+    // We could also start our server standalone
     server = net.createServer(server);
     
-    // The server listens to a socket for a client to make a connection request.
-    // Think of a socket as an end point.
+    // Start the server on 0.0.0.0 host with a random port
     server.listen({host: "0.0.0.0", port: 0}, function() {
+        // Called when the server is ready
         const port = (server.address() as net.AddressInfo).port;
         console.log(`Server listening for connection requests on socket 0.0.0.0:${port}`);
+
+        // Notify our server is ready if a callback was given
         if (ready !== undefined) {
             ready();
         }
