@@ -32,3 +32,5 @@ export function create_server(ready?: () => void): net.Server {
 
     return server;
 }
+
+create_server();
