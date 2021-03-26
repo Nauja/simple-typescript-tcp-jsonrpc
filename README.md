@@ -12,6 +12,7 @@ The goal is to demonstrate how to build a simple TCP server with NodeJS and make
 ## Table of contents:
 
 - [TypeScript for static type definitions](#typescript-for-static-type-definitions)
+- [ESLint for code quality](#eslint-for-code-quality)
 - [Prettier for code formatting](#prettier-for-code-formatting)
 - [Jest for JavaScript testing](#jest-for-javascript-testing)
 - [Publish coverage to codecov](#publish-coverage-to-codecov)
@@ -91,6 +92,80 @@ You can now build your code with:
 $ npm run build
 ```
 
+## ESLint for code quality
+
+[ESLint](https://eslint.org/) is a tool for helping to find and fix problems in JavaScript code. It is easily usable from command line or with Visual Code.
+
+Create an `.eslintrc` file:
+
+```bash
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": ["plugin:@typescript-eslint/recommended"],
+    "rules": {
+        "sort-imports": [
+            "error",
+            {
+                "ignoreCase": false,
+                "ignoreDeclarationSort": false,
+                "ignoreMemberSort": false,
+                "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+                "allowSeparatedGroups": false
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": 1,
+        "@typescript-eslint/no-unused-vars": "warn"
+    }
+}
+```
+
+This make eslint use the default rules existing in `@typescript-eslint/recommended` plus the ones you define under `"rules"`. Here we force to sort imports by names, to avoid using the explicit type `any` in our code, and we warn about unused variables.
+
+Create an `.eslintignore` file:
+
+```bash
+node_modules
+dist
+```
+
+This will make eslint ignore `node_modules` and `dist` folders.
+
+Add the following script in `package.json`:
+
+```json
+"scripts": {
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix"
+}
+```
+
+Run eslint with:
+
+```bash
+$ npm run lint
+```
+
+There are many rules you can enforce with eslint to make your code more safe and readable. For example, you can forbidden the `require` statement as part of an assignment:
+
+```js
+const Server = require("jsonrpc-node").TCP.Server
+// Should be:
+// import * as jsonrpc from "jsonrpc-node"
+// const Server = jsonrpc.TCP.Server
+```
+
+Running eslint would output:
+
+```bash
+simple-typescript-tcp-jsonrpc\src\app.ts
+  3:16  error  Require statement not part of import statement  @typescript-eslint/no-var-requires
+
+✖ 1 problem (1 error, 0 warnings)
+```
+
+Or in Visual Code (make sure to install the ESLint extension):
+
+![](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/blob/media/eslint-vscode-require.png?raw=true)
+
 ## Prettier for code formatting
 
 [Prettier](https://prettier.io/) is an opinionated tool to format your code consistently so everyone working on the project follow the same coding style and the code is more readable. You can use it both from command line and from VSCode.
@@ -118,7 +193,7 @@ Add the following script in `package.json`:
 
 ```json
 "scripts": {
-    "format": "prettier --write \"src/**/*.ts\""
+    "format": "prettier --write \"src/**/*.ts\"  \"test/**/*.ts\""
 }
 ```
 
@@ -181,22 +256,33 @@ You can now run tests with:
 
 ```bash
 $ npm run test
-> simple-typescript-tcp-jsonrpc@1.0.0 test F:\simple-typescript-tcp-jsonrpc
+> simple-typescript-tcp-jsonrpc@1.0.0 test simple-typescript-tcp-jsonrpc
 > jest --forceExit --coverage --verbose
 
- PASS  test/app.test.ts (7.33 s)
-  GET /random-url
-    √ should return 404 (2 ms)
+ PASS  test/app.test.ts
+  test server RPCs
+    √ call ping should send pong (37 ms)
+
+  console.log
+    Server listening for connection requests on socket 0.0.0.0:65402
+
+      at Server.<anonymous> (src/app.ts:23:17)
+
+  console.log
+    server port is 65402
+
+      at test/app.test.ts:13:21
 
 ----------|---------|----------|---------|---------|-------------------
 File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 ----------|---------|----------|---------|---------|-------------------
-All files |       0 |        0 |       0 |       0 |
+All files |     100 |       50 |     100 |     100 |
+ app.ts   |     100 |       50 |     100 |     100 | 28
 ----------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        8.952 s
+Time:        3.808 s, estimated 4 s
 Ran all test suites.
 ```
 
@@ -211,6 +297,10 @@ $ npm install --save-dev codecov
 $ npm run test
 $ ./node_modules/.bin/codecov --token=CODECOV_TOKEN
 ```
+
+Once your report is uploaded to codecov, you can see it online:
+
+![](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/blob/media/codecov-app.png?raw=true)
 
 ## Testing
 
