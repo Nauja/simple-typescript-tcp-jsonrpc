@@ -1,6 +1,7 @@
 # simple-typescript-tcp-jsonrpc
 
 [![build status](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml/badge.svg)](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml)
+[![Lint](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/lint.yml/badge.svg)](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/lint.yml)
 [![codecov](https://codecov.io/gh/Nauja/simple-typescript-tcp-jsonrpc/branch/main/graph/badge.svg?token=6ZHBCWGR2L)](https://codecov.io/gh/Nauja/simple-typescript-tcp-jsonrpc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
@@ -11,12 +12,27 @@ The goal is to demonstrate how to build a simple TCP server with NodeJS and make
 
 ## Table of contents:
 
+- [Usage](#usage)
 - [TypeScript for static type definitions](#typescript-for-static-type-definitions)
 - [ESLint for code quality](#eslint-for-code-quality)
 - [Prettier for code formatting](#prettier-for-code-formatting)
 - [Jest for JavaScript testing](#jest-for-javascript-testing)
 - [Publish coverage to codecov](#publish-coverage-to-codecov)
 - [Testing](#testing)
+
+## Usage
+
+This sample is not meant to be run standalone, it is more meant as a demonstration of writing a TCP server in NodeJS, respecting the best practices, and running unit tests.
+
+But you can still run the sample with:
+
+```bash
+$ npm run build
+$ npm run start
+Server listening for connection requests on socket 0.0.0.0:65521
+```
+
+This starts a TCP server you can send JSON-RPC messages to.
 
 ## TypeScript for static type definitions
 
