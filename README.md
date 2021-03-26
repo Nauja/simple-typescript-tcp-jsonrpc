@@ -94,6 +94,8 @@ $ npm run build
 
 ## ESLint for code quality
 
+[ESLint](https://eslint.org/) is a tool for helping to find and fix problems in JavaScript code. It is easily usable from command line or with Visual Code.
+
 Create an `.eslintrc` file:
 
 ```bash
