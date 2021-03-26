@@ -17,6 +17,8 @@ describe("test server RPCs", () => {
             client.call("ping", [], (err: any, result: any) => {
                 // Check the received result is equals to "pong"
                 expect(result).toEqual("pong");
+                // Properly close the server
+                server.close();
                 // Notify this test is done
                 done();
             })
