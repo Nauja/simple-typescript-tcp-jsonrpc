@@ -164,7 +164,7 @@ Ran all test suites.
 
 For continuous integration, it is best to automatically publish coverage results to a service like [codecov.io](https://codecov.io/).
 
-It can be easily done with `codecov`:
+It can be easily done with [codecov](https://www.npmjs.com/package/codecov):
 
 ```bash
 $ npm install --save-dev codecov
