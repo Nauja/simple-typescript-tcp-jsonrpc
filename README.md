@@ -3,6 +3,7 @@
 [![build status](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml/badge.svg)](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml)
 [![codecov](https://codecov.io/gh/Nauja/simple-typescript-tcp-jsonrpc/branch/main/graph/badge.svg?token=6ZHBCWGR2L)](https://codecov.io/gh/Nauja/simple-typescript-tcp-jsonrpc)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 This is just an example of a simple TCP server using JSON-RPC as a protocol.
 
@@ -11,6 +12,7 @@ The goal is to demonstrate how to build a simple TCP server with NodeJS and make
 ## Table of contents:
 
 - [TypeScript for static type definitions](#typescript-for-static-type-definitions)
+- [Prettier for code formatting](#prettier-for-code-formatting)
 - [Jest for JavaScript testing](#jest-for-javascript-testing)
 - [Publish coverage to codecov](#publish-coverage-to-codecov)
 - [Testing](#testing)
@@ -87,6 +89,43 @@ You can now build your code with:
 
 ```bash
 $ npm run build
+```
+
+## Prettier for code formatting
+
+[Prettier](https://prettier.io/) is an opinionated tool to format your code consistently so everyone working on the project follow the same coding style and the code is more readable. You can use it both from command line and from VSCode.
+
+Just install it:
+
+```bash
+$ npm i --save-dev prettier
+```
+
+Create a `.prettierrc` configuration file:
+
+```json
+{
+    "trailingComma": "none",
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": false
+}
+```
+
+While those settings may be subjective, make sure to commit `.prettierrc` in your project so everyone follow the same rules.
+
+Add the following script in `package.json`:
+
+```json
+"scripts": {
+    "format": "prettier --write \"src/**/*.ts\""
+}
+```
+
+And now you can format your codebase with:
+
+```bash
+$ npm run format
 ```
 
 ## Jest for JavaScript testing
