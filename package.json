@@ -10,7 +10,7 @@
     "license": "MIT",
     "scripts": {
         "build": "tsc",
-        "format": "prettier --write \"src/**/*.ts\"",
+        "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
         "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
         "serve-debug": "nodemon --inspect dist/server.js",
         "serve": "node dist/app.js",

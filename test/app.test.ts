@@ -1,4 +1,4 @@
-import * as net from "net"
+import * as net from "net";
 import * as app from "../src/app";
 
 const Client = require("jsonrpc-node").TCP.Client;
@@ -21,7 +21,7 @@ describe("test server RPCs", () => {
                 server.close();
                 // Notify this test is done
                 done();
-            })
+            });
         });
     });
 });
