@@ -1,5 +1,7 @@
 # simple-typescript-tcp-jsonrpc
 
+[![build status](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml/badge.svg)](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml)
+
 This is just an example of a simple TCP server using JSON-RPC as a protocol.
 
 The goal is to demonstrate how to build a simple TCP server with NodeJS and make a good use of basic best practices such as TypeScript, unit testing or lint.
