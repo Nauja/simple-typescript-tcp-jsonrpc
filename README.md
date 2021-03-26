@@ -162,6 +162,10 @@ simple-typescript-tcp-jsonrpc\src\app.ts
 ✖ 1 problem (1 error, 0 warnings)
 ```
 
+Or in Visual Code (make sure to install the ESLint extension):
+
+![](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/blob/media/eslint-vscode-require.png?raw=true)
+
 ## Prettier for code formatting
 
 [Prettier](https://prettier.io/) is an opinionated tool to format your code consistently so everyone working on the project follow the same coding style and the code is more readable. You can use it both from command line and from VSCode.
