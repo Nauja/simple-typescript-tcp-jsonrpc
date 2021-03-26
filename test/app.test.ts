@@ -1,7 +1,6 @@
-import * as net from "net";
 import * as app from "../src/app";
-
-const Client = require("jsonrpc-node").TCP.Client;
+import * as jsonrpc from "jsonrpc-node";
+import * as net from "net";
 
 // Describe a sequence of tests
 describe("test server RPCs", () => {
@@ -12,9 +11,9 @@ describe("test server RPCs", () => {
             // Connect a client to started server
             const port = (server.address() as net.AddressInfo).port;
             console.log(`server port is ${port}`);
-            const client = new Client(port, "127.0.0.1");
+            const client = new jsonrpc.TCP.Client(port, "127.0.0.1");
             // Call the ping function with RPC
-            client.call("ping", [], (err: any, result: any) => {
+            client.call("ping", [], (err: unknown, result: unknown) => {
                 // Check the received result is equals to "pong"
                 expect(result).toEqual("pong");
                 // Properly close the server

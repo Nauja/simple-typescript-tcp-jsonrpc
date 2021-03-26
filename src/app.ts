@@ -1,14 +1,13 @@
+import * as jsonrpc from "jsonrpc-node";
 import * as net from "net";
 
-const Server = require("jsonrpc-node").TCP.Server;
-
-function ping(args: any, reply: any) {
+function ping(args: unknown, reply: (_: unknown) => unknown) {
     reply("pong");
 }
 
 export function create_server(ready?: () => void): net.Server {
     // Create a JSON-RPC server
-    var server = new Server();
+    let server = new jsonrpc.TCP.Server();
 
     // Register an RPC function
     server.register("ping", ping);
