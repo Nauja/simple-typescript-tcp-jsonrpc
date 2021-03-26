@@ -6,6 +6,12 @@ This is just an example of a simple TCP server using JSON-RPC as a protocol.
 
 The goal is to demonstrate how to build a simple TCP server with NodeJS and make a good use of basic best practices such as TypeScript, unit testing or lint.
 
+## Table of contents:
+
+- [TypeScript for static type definitions](#typescript-for-static-type-definitions)
+- [Jest for JavaScript testing](#jest-for-javascript-testing)
+- [Testing](#testing)
+
 ## TypeScript for static type definitions
 
 It is greatly recommended to use [TypeScript](https://www.typescriptlang.org/) on a big codebase as it make the code more readable, secure and reliable by adding static type definitions.
