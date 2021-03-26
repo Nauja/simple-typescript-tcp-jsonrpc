@@ -298,6 +298,10 @@ $ npm run test
 $ ./node_modules/.bin/codecov --token=CODECOV_TOKEN
 ```
 
+Once your report is uploaded to codecov, you can see it online:
+
+![](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/blob/media/codecov-app.png?raw=true)
+
 ## Testing
 
 ```bash
