@@ -12,6 +12,7 @@ The goal is to demonstrate how to build a simple TCP server with NodeJS and make
 ## Table of contents:
 
 - [TypeScript for static type definitions](#typescript-for-static-type-definitions)
+- [ESLint for code quality](#eslint-for-code-quality)
 - [Prettier for code formatting](#prettier-for-code-formatting)
 - [Jest for JavaScript testing](#jest-for-javascript-testing)
 - [Publish coverage to codecov](#publish-coverage-to-codecov)
@@ -89,6 +90,74 @@ You can now build your code with:
 
 ```bash
 $ npm run build
+```
+
+## ESLint for code quality
+
+Create an `.eslintrc` file:
+
+```bash
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": ["plugin:@typescript-eslint/recommended"],
+    "rules": {
+        "sort-imports": [
+            "error",
+            {
+                "ignoreCase": false,
+                "ignoreDeclarationSort": false,
+                "ignoreMemberSort": false,
+                "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+                "allowSeparatedGroups": false
+            }
+        ],
+        "@typescript-eslint/no-explicit-any": 1,
+        "@typescript-eslint/no-unused-vars": "warn"
+    }
+}
+```
+
+This make eslint use the default rules existing in `@typescript-eslint/recommended` plus the ones you define under `"rules"`. Here we force to sort imports by names, to avoid using the explicit type `any` in our code, and we warn about unused variables.
+
+Create an `.eslintignore` file:
+
+```bash
+node_modules
+dist
+```
+
+This will make eslint ignore `node_modules` and `dist` folders.
+
+Add the following script in `package.json`:
+
+```json
+"scripts": {
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix"
+}
+```
+
+Run eslint with:
+
+```bash
+$ npm run lint
+```
+
+There are many rules you can enforce with eslint to make your code more safe and readable. For example, you can forbidden the `require` statement as part of an assignment:
+
+```js
+const Server = require("jsonrpc-node").TCP.Server
+// Should be:
+// import * as jsonrpc from "jsonrpc-node"
+// const Server = jsonrpc.TCP.Server
+```
+
+Running eslint would output:
+
+```bash
+simple-typescript-tcp-jsonrpc\src\app.ts
+  3:16  error  Require statement not part of import statement  @typescript-eslint/no-var-requires
+
+✖ 1 problem (1 error, 0 warnings)
 ```
 
 ## Prettier for code formatting
