@@ -1,6 +1,7 @@
 # simple-typescript-tcp-jsonrpc
 
 [![build status](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml/badge.svg)](https://github.com/Nauja/simple-typescript-tcp-jsonrpc/actions/workflows/nodejs.yml)
+[![codecov](https://codecov.io/gh/Nauja/simple-typescript-tcp-jsonrpc/branch/main/graph/badge.svg?token=6ZHBCWGR2L)](https://codecov.io/gh/Nauja/simple-typescript-tcp-jsonrpc)
 
 This is just an example of a simple TCP server using JSON-RPC as a protocol.
 
