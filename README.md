@@ -256,22 +256,33 @@ You can now run tests with:
 
 ```bash
 $ npm run test
-> simple-typescript-tcp-jsonrpc@1.0.0 test F:\simple-typescript-tcp-jsonrpc
+> simple-typescript-tcp-jsonrpc@1.0.0 test simple-typescript-tcp-jsonrpc
 > jest --forceExit --coverage --verbose
 
- PASS  test/app.test.ts (7.33 s)
-  GET /random-url
-    √ should return 404 (2 ms)
+ PASS  test/app.test.ts
+  test server RPCs
+    √ call ping should send pong (37 ms)
+
+  console.log
+    Server listening for connection requests on socket 0.0.0.0:65402
+
+      at Server.<anonymous> (src/app.ts:23:17)
+
+  console.log
+    server port is 65402
+
+      at test/app.test.ts:13:21
 
 ----------|---------|----------|---------|---------|-------------------
 File      | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
 ----------|---------|----------|---------|---------|-------------------
-All files |       0 |        0 |       0 |       0 |
+All files |     100 |       50 |     100 |     100 |
+ app.ts   |     100 |       50 |     100 |     100 | 28
 ----------|---------|----------|---------|---------|-------------------
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
-Time:        8.952 s
+Time:        3.808 s, estimated 4 s
 Ran all test suites.
 ```
 
