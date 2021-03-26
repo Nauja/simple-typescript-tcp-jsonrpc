@@ -12,3 +12,5 @@ const port = 8080;
 server.listen(port, function() {
     console.log(`Server listening for connection requests on socket localhost:${port}`);
 });
+
+export default server;
